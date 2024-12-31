@@ -6,7 +6,8 @@ import edu.upc.epsevg.prop.hex.IPlayer;
 import edu.upc.epsevg.prop.hex.IPlayer;
 import edu.upc.epsevg.prop.hex.IPlayer;
 import edu.upc.epsevg.prop.hex.players.H_E_X_Player;
-
+import edu.upc.epsevg.prop.hex.players.PlayerMinimax;
+import edu.upc.epsevg.prop.hex.players.PlayerID;
 
 
 import javax.swing.SwingUtilities;
@@ -24,12 +25,17 @@ public class Game {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
+                //Player 1 wins connecting Left-Right, Player 2 wind connecting Top-Bottom
                 
-                IPlayer player1 = new H_E_X_Player(2/*GB*/);
+                IPlayer player2 = new H_E_X_Player(2/*GB*/);
                 
-                IPlayer player2 = new HumanPlayer("Human");
-                                
+                IPlayer player1 = new PlayerMinimax(3);
+                //IPlayer player1 = new PlayerID();
+                //IPlayer player2 = new RandomPlayer("a");
+                //IPlayer player2 = new HumanPlayer("b");
+                
                 new Board(player1 , player2, 11 /*mida*/,  10/*s*/, false);
+   
              }
         });
     }
